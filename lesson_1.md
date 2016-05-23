@@ -1,44 +1,46 @@
-# Lesson 1
+# Lezione 1
 
-#### Goal
-Teleport your character to a point you define in code.
+#### Obiettivo
+Teleporta il tuo personaggio in un punto dello spazio che decidi e definisci nel codice.
 
-#### New Concepts
+#### Nuovi Concetti
 
-Variables are basically nametags used to refer to something, and are set using a single equals sign.
+Le **variabili** sono delle _etichette_ utilizzate come riferimento a qualcosa. Una variabile viene _assegnata_ utilizzando il segno **uguale** (`=`).
 
 ```python
 x = 5
 ```
 
-You can set numbers into variables to "remember" them for later use.
+Ad esempio, puoi assegnare dei numeri a delle variabili in modo da memorizzarli per poterli usarli successivamente.
 
 ```python
 player_position = mc.player.getPos()
 ```
 
-You can also save important information, such as a player's position, into variables.
+Puoi anche usare le variabili per memorizzare delle informazioni importanti, come la posizione del giocatore.
 
-
-#### Code 
-Open up script.py in a code editor. We'll be going through this file line-by-line to start with.
+#### Codice sorgente (o 'codice' o 'sorgente')
+Apri il file `script.py` nel editor di codice. Per iniziare, analizzeremo il file una riga alla volta. 
 
 ```python
 import mcpi.minecraft as minecraft
 ```
-This first line imports the mcpi.minecraft library, making it available under the name 'minecraft'
+La prima linea _importa_ la _libreria_ `mcpi.minecraft` e la rende disponibile con il nome `minecraft`.
+
 
 -----------------
 
 ```python
-#NOTE - replace "seanybob" below with your name
-mc = minecraft.Minecraft.create(address="199.96.85.3", name="seanybob")
+# NOTA - sostituisci "mancho" qui sotto con il tuo nome
+indirizzo_server = "192.168.85.1"
+nome_giocatore = "mancho"
+mc = minecraft.Minecraft.create(address=indirizzo_server, name=nome_giocatore)
 ```
 
-- Anything prefixed by the '#' symbol is a comment for humans, and is ignored by the computer.
-- Here we see we are creating a connection to the minecraft server and storing it in a variable named "mc".
-- The server we are connecting to is located at IP address 127.0.0.1 and linking to the login name "seanybob".
-- As mentioned in the comment above it, you need to change "seanybob" to your minecraft name that you chose.
+- Qualsiasi riga che inizia con il simbolo `#` ('cancelletto') è un _commento_ per il lettore e viene ignorato dal computer.
+- Con queste istruzioni creiamo una connessione al nostro server minecraft e la memorizziamo nella variabile `mc`
+- Il server a cui ci stiamo connettendo si trova all'indirizzo IP `192.168.85.1` e ci stiamo connettendo come utente `mancho`.
+- Come scritto nel commento prima delle istruzioni, puoi cambiare `mancho` con il nome utente che preferisci.
 
 -----------------
 
@@ -48,10 +50,10 @@ y = 110
 z = 12
 ```
 
-- Here we are creating 3 variables for later use.
-- In the variable named 'x', we are storing the number 10.
-- In the variable named 'y', we are storing the number 110.
-- In the variable named 'z', we are storing the number 12.
+- Qui creiamo 3 nuove variabili da usare più tardi.
+- Nella variabile che chiamiamo `x` memorizziamo il numero `10`.
+- In quella `y`, il numero `110`.
+- In quella `z`, il numero `12`.
 
 -----------------
 
@@ -59,32 +61,34 @@ z = 12
 mc.player.setPos(x, y, z)
 ```
 
-- Using our connection to our minecraft server (we previously saved the connection to the mc variable)...
-- We will access our player object inside that minecraft server...
-- And then set our position in the minecraft server to the x/y/z coordinates indicated by the variables we just set earlier.
+- Usando la connessione al server minecraft che abbiamo creato e memorizzato precedentemente nella variabile `mc`...
+- ... usiamo l'entità (nel gergo della programmazione si chiama '_oggetto_') che rappresenta il nostro giocatore all'interno del server minecraft...
+- ... e, infine, impostiamo la nostra posizione minecraft alle coordinate x/y/z memorizzate nelle variabili assegnate poco prima.
 
-The variables in the call get replaced, essentially turning into the values we stored in them earlier: 
+Quello che succede è che le variabili vengono sostituite automaticamente con il valore che gli è stato assegnato.
+Di fatto, l'istruzione di sopra è equivalmente a:
 
+```python
 mc.player.setPos(10, 110, 12)
+```
 
+#### Terminale a riga di comando (o 'Terminale' o 'Riga di comando')
 
-#### Terminal
-
-To execute the script, in your terminal cd to the directory the script is located:
+Per poter _eseguire_ lo script, usando la riga di comando in un terminale, ci spostiamo nella _directory_ in cui è salvato il file `script.py` 
 ```shell
 cd ~/TeachCraft-Challenges
 ```
 
-Then run the script like so:
+Poi eseguiamo lo script con il seguente comando:
 ```shell
 python script.py
 ```
 
-Each time you edit the code, you will need to re-run the script using the above command.
+Ogni volta che facciamo una modifica al codice sorgente, dobbiamo eseguire nuovamente lo script utilizzando questo comando.
 
 ----------------------
 
-# CHALLENGES
+# Esercizi
 
-- Modify the script to go to a different x/y/z location.
-- Figure out which of the three coordinates (x, y, or z) controls how high up you are in the air.
+- Modifica lo script per andare in una diversa posizione x/y/z.
+- Facendo delle prove, cerca di capire qualche delle tree coordinate x, y o z è quella che ti fa spostare verso l'altro.
