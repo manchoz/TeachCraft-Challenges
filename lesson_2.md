@@ -1,147 +1,151 @@
-# Lesson 2
+# Lezione 2
 
-#### Goal
-Make a path of flowers spawn behind you while you walk. (Can replace flowers with any block id, such as lava)
+#### Obiettivi
+Lascia una traccia di fiori dietro di te mentre cammini. (Puoi sostituire i fiori con qualsiasi tipo di blocco come, ad esempio, con la lava).
 
-#### New Concepts
+#### Nuovi Concetti
 
 ```python
-print "Hi!"
+print("Hi!")
 my_variable = 5
-print my_variable
+print(my_variable)
 ```
 
-- The print command will print things to the terminal.
-- This is useful for debugging, both to see when code got executed, and to see the contents of variables
+- La funzione `print` stampa un testo sul terminale.
+- È utile per fare il _debugging_ (trovare gli errori in un programma che non funziona), sia per vedere quando una certa porzione di codice viene eseguita, sia per visualizzare il contenuto di una variabile.
 
 -----------------
 
-Now for a new construct, an infinite while loop!
+E adesso introduciamo un nuovo costrutto, un ciclo (_loop_) infinito.
 
-Infinite while loops are used to make a set of code execute repeatedly, over and over, until the user decides to stop it.
+Un ciclo infinito `while` viene usato per eseguire una porzione di codice ripetutamente e in continuazione, fino a quando l'utente non decida di fermarla.
 
-An infinite while loop's structure looks like this:
+Un ciclo infinto `while` ha la seguente struttura:
+
+```python
+while <espressione booleana>:
+    <esegui la porzione di codice indentata>
+    <torna indietro all'inizio dell'istruzione while>
+```
+
+Ad esempio, il codice seguente, stamperà per sempre la sequenza "1 2 3 1 2 3 1 2 3 1 2 3..."
 
 ```python
 while True:
-    <execute this indented code>
-    <jump back to the top of the while statement>
+    print("1")
+    print("2")
+    print("3")
 ```
 
-For example, will constantly print the pattern "1 2 3 1 2 3 1 2 3 1 2 3..." over and over.
+Riassumendo, un ciclo infinito `while` eseguirà in continuazione lo stesso gruppo di istruzioni fino a quando non verrà fermato dall'utente con la combinazione di tasti `CTRL+C`
 
-```python
-while True:
-    print "1"
-    print "2"
-    print "3"
-```
-
-In summary, an infinite while loop will keep executing the same code over and over until its it's forced to stop by the user by pressing control+c.
-
-#### Code
-Open up script.py in a code editor. Delete everything in it, we'll be starting from scratch!
+#### Codice
+Apri il file `script.py` nell'editor di codice. Cancella tutto, iniziamo da capo!
 
 ```python
 import mcpi.minecraft as minecraft
-mc = minecraft.Minecraft.create(address="199.96.85.3", name="seanybob")
+ 
+indirizzo_server = "192.168.85.1"
+nome_giocatore = "mancho"
+mc = minecraft.Minecraft.create(address=indirizzo_server, name=nome_giocatore)
 ```
-The first 2 lines are the same as they were in the previous lesson. Be sure to replace "seanybob" with your name!
+Le prime quattro righe sono le stesse della prima lezione.
+Ricorda di sostituire il nome "mancho" con il tuo nome!
 
 -----------------
 
 ```python
 import time
 ```
-This line will import an additional python library we will be using called time - allowing us to "pause" the script for several seconds as needed.
+Questa istruzione importa una libreria Python chiamata `time` che ci permetterà di mettere lo script in pausa per tutto il tempo di cui abbiamo bisogno. 
 
 -----------------
 
 ```python
-print "Before loop."
+print("Prima del while.")
 ```
-This line just prints text to the terminal. We'll be using it as a method of debugging, so we can see when this line of code got executed.
+Questa istruzione stampa semplicemente il testo nel terminale. La useramo per fare debugging, in modo da vedere quando le istruzioni successive stanno per essere eseguite.
 
 -----------------
 
 ```python
 while True:
 ```
-Next, we open a while loop. Note that this loop's condition is simply 'True'. This means it will continue executing, forever, until you manually kill it with control+C. You can also close the terminal to kill it. This is also called an infinite loop.
+Poi iniziamo un ciclo `while`. Nota che la _condizione_ del ciclo è semplicemente `True` (valore booleano 'vero'). In questo caso, il ciclo loop verrà eseguito per sempre fino alla pressione della combinazione `CTRL+C` oppure alla chiusura della finestra del terminale.
 
 -----------------
 
 ```python
-    #Retrieve the current player's X, Y, and Z coordinates
+    # Recupera le coordinate x/y/z della posizione del giocatore
     pos = mc.player.getPos()
 ```
-Inside the while loop, the first thing we do is get the player's x/y/z coordinates. You'll note this is similar to the setPos function from lesson 1, though it's retrieving them instead of setting them!
+Per prima cosa, all'intero del ciclo loop recuperiamo la posizione del giocatore. La funzione `getPos` è molto simile alla funzione `setPos` della prima lezione, con la differenza che serve per recuperare invece che per impostare le coordinate del giocatore. 
 
-IMPORTANT NOTE - you'll observe this line of code (and several lines underneath) are indented! This is how python tells which code belongs to the while loop, and needs to be executed in a loop. Indention is important in python!
+**NOTA IMPORTATE** - Osserva con attenzione che questa istruzione e quella delle righe seguenti è _indentata_ (è distanziata dal margine sinistro con quattro spazi)! Questo è la sintassi che permette di dire a Python quali sono le righe di codice che appartengono allo stesso ciclo `while` e che devono essere esguite dentro questo ciclo. In Python l'indentazione è **importante**!
+
 
 -----------------
 
 ```python
-    #Store the current player's coordinates in our variables x/y/z
+    # Memorizza le coordinate della posizione del giocatore nelle rispettive variabili x/y/z
     x = pos.x
     y = pos.y
     z = pos.z
 ```
-Still inside the while loop, we store the player's position into x/y/z variables for later use.
+Continuando nel ciclo `while`, memorizziamo la posizione del giocatore nelle variabili `x`, `y` e `z`, perché ci serviranno più avanti.
 
 -----------------
 
 ```python
-    #This is the minecraft block ID of the flower block.
+    # Questo è il Block ID di Minecraft che identifica i fiori.
     block = 38
 ```
-Still inside the while loop, we set Minecraft's block id for a flower to a variable called 'block' that we'll use later. You could put any block ID you want here. To see a list of block ids, check out [this website](http://minecraft-ids.grahamedgecombe.com/).
+Sempre nel ciclo `while` memorizziamo il Block ID di Minecraft per il blocco di tipo fiori in una variabile chiamata `block`. Puoi sceglier un blocco di qualsiasi tipo e memorizzare il suo ID nella stessa variabile. La lista dei Block ID di Minecraft è disponibile alla seguente [pagina web] (http://minecraft-ids.grahamedgecombe.com/).
 
 -----------------
 
 ```python
-    #Set the block at the x/y/z coordinates of the current player to the block id we chose above.
+    # Imposta il tipo del blocco su cui è posizionato il giocatore con il Block ID che abbiamo scelto precedentemente.
     mc.setBlock(x, y, z, block)
 ```
-Still inside the while loop, here we use our connection to the minecraft instance to set the block located at our x/y/z coordinates we stored earlier to the block id we stored earlier.
+Ancora nel ciclo `while`, usiamo la nostra connessione `mc` al server Minecraft per impostare il tipo di blocco alle coordinate x/y/x che abbiamo memorizzato prima.
 
-Since the x/y/z coordinates we stored earlier were our position, and the block id we stored earlier was a flower, what we are doing is putting a flower in the spot we are standing!
+Dato che le variabili `x`/`y`/`x` contengono le coordinate della nostra posizione e dato che la variabile `block` contiene il tipo di blocco 'fiori', quello che stiamo facendo è mettere dei fiori nel punto in cui siamo!
 
-Moreover, since this is a loop, it means we should make a trail of flowers behind us while we walk! Let's finish this off so we can test it.
+Inoltre, dato che la istruzioni vengono eseguite dentro al ciclo `while`, camminando possiamo creare una scia di fiori! Aggiungiamo le ultime istruzione e siamo pronti per provare il programma.
 
 -----------------
 
 ```python
-    #Wait for two tenths of a second, then jump back to the top of the while loop.
-    print "LOOPING, waiting 0.2 seconds"
+    # Aspetta per due decimi di secondo e torna indietro all'inizio del ciclo
+    print("Nel while. Mi fermo per due decimi di secondo")
     time.sleep(0.2)
 ```
-Still inside the while loop, here we print a statement letting us know the loop executed, then we tell the program to pause and wait for 0.2 seconds. This is important, because computers are lightning fast. If you don't do that pause, the computer will set the current block you are standing on to a flower thousands and thousands of times a second, and probably crash the minecraft server.
+Sempre nel ciclo `while` stampiamo un messaggio che ci permette di sapere dove siamo e poi mettiamo in pausa il programma per due decimi di secondo. Questo è importante perché i computer sono velocissimi e se non mettessimo il programma in pausa almeno per un po' il computer imposterebbe il nuovo tipo di blocco per migliaia e migliaia di volte e, probabilmetente, alla fine farebbe _crashare_ il server Minecraft.
 
 -----------------
 
 ```python
-print "End of loop."
+print("Fuori dal while.")
 ```
-Finally the last line, which is OUTSIDE the while loop. We know that because it's not indented - that's how the computer knows the while loop has ended.
+Per finire, l'ultima istruzione che è **fuori** dal ciclo `while`. Sappiamo che è fuori perché non è indentata. Questa è la sintassi che dice al Python che il ciclo `while` è finito.
 
+#### Terminale
 
-#### Terminal
-
-Run the script like so:
+Esegui lo script come al solito:
 ```shell
 python script.py
 ```
 
-Note that it will run in an infinite loop. To end it you can hit control+C, or just close the terminal.
+Fai attenzione perché lo script verrà eseguito per sempre (`while True:`). Per fermarlo, digita la combinazione di tasti `CTRL-C` oppure chiudi la finestra del terminale.
 
 
-# CHALLENGES
+# SFIDE
 
-- Modify the script above to put lava down instead of a flower ([block id explorer](http://minecraft-ids.grahamedgecombe.com/))
-- Instead of putting the lava under the player, can you put it one block behind them (or to the side?)
-- Try experimenting with a few other block IDs! Some ideas:
-    - You could make a yellow brick road out of gold blocks.
-    - You could lay minecraft track underneath where you walk, creating a roller coaster rapidly!
+- Modifica lo script per creare una scia di lava ([Block ID Explorer](http://minecraft-ids.grahamedgecombe.com/))
+- Invece di creare la lava sotto al giocatore potresti crearla dietro, oppure di lato!
+- Fai esperimenti con altri Block ID! Qualche idea:
+    - Potresti creare una strada gialla, fatta di blocchi d'oro.
+    - Potresti posare dei binari sotto di te per creare delle montagne russe molto velocemente!
     
     
