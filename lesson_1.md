@@ -88,7 +88,7 @@ Ogni volta che facciamo una modifica al codice sorgente, dobbiamo eseguire nuova
 
 ----------------------
 
-# Esercizi
+# SFIDE
 
 - Modifica lo script per andare in una diversa posizione x/y/z.
 - Facendo delle prove, cerca di capire qualche delle tree coordinate x, y o z è quella che ti fa spostare verso l'altro.
