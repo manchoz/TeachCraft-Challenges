@@ -1,51 +1,50 @@
 ## TeachCraft 
 
-A series of lessons used to teach middle school and high school kids the fundamentals of programming!
+Una serie di lezioni per insegnare a bambini e ragazzi i fondamenti della programmazione!
 
-Using Python, each of the lessons will teach the kids new concepts, going through while loops, if statements, for loops,  algorithms, function calls, and the like.
+Usando Python, ogni lezione insegnerà ai ragazzi nuovi concetti, passando dai cicli while, le condizioni if, i cicli for, algoritmi, chiamare le funzioni e così via.
 
-The entire process is collaborative - students are able to see each other's progress as they are all in the same multiplayer server together. Indeed, one of the later lessons constructs a magical system the students can use to battle each other, invoking spells they prepared in code!
+L'intero processo è collaborativo - gli studenti possono vedere i progressi degli altri dato che sono insieme nello stesso server multyplayer. Infatti, una delle ultime lezioni aiuterà i ragazzi a costruire un sistema magico che potranno usare per combattere con gli altri, lanciare magie che avranno preparato nel codice.
 
-All that is needed to get started is downloading the code in this repo and installing java on your system (full instructions in the [setup guide](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/setup.md)).
+Tutto ciò che serve per partire è scaricare questo il codice in questo repository e installare java sul tuo sistema (tutte le istruzioni le trovi nella [guida di setup](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/setup.md))
 
-I have a server up and running with the python api open - all the lessons default to pointing to my server's IP. If you'd like privacy, or if my server is down due to being DOS'ed (easily achievable through it's open python api), you may want to [setup your own server](https://github.com/teachthenet/TeachCraft-Server). If you note my server is down, feel free to open an issue here to inform me to restart it.
+Io ho un server attivo e funzionante con le api per python - tutte le lezioni puntano di default all'IP del mio server. Se preferisci la privacy o il mio server fosse non funzionante () potresti voler [creare il tuo](https://github.com/teachthenet/TeachCraft-Server). Se dovessi trovare il mio server non funzionante sentiti libero di aprire una issue qui per informarmi e io lo rimetterò su.
 
-My Minecraft server is located at
+Il mio server Minecraft si trova
 ```
 199.96.85.3:25570
 ```
 
-### Lessons & Setup
+### Lezioni & Setup
 
-[Initial Setup](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/setup.md): Get minecraft running, get connected to the server.
+[Setup iniziale](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/setup.md): Far funzionare minecraft, connettersi al  server.
 
-[Lesson 1](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_1.md): Teleport your character to a point you define in code.
+[Lezione 1](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_1.md): Teleporta il tuo personaggio in un punto dello spazio che decidi e definisci nel codice.
 
-[Lesson 2](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_2.md): Make a path of something (flowers, lava, fire) follow behind you while you walk. 
+[Lezione 2](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_2.md): Lascia una traccia di fiori dietro di te mentre cammini. (Puoi sostituire i fiori con qualsiasi tipo di blocco come, ad esempio, con la lava).
 
-[Lesson 3](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_3.md): Give your character the ability to walk on water (by turning water below your character into ice).
+[Lezione 3](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_3.md): Dai l'abilità al tuo personaggio di camminare sull'acqua (trasformando l'acqua sotto il tuo personaggion in ghiaccio).
 
-[Lesson 4](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_4.md): Create a building programmatically
+[Lezione 4](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_4.md): Creare una costruzione programmaticamente.
 
-[Lesson 5](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_5.md): Create a pyramid programmatically
+[Lezione 5](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_5.md): Creare una piramide programmaticamente.
 
-[Lesson 6](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_6.md): Use an algorithm to construct the pyramid by analyzing the pattern you discovered in lesson 5!
+[Lezione 6](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_6.md): Usare un algoritmo per costruire la piramide analizzando il pattern che hai scoperto nella lezione 5!
 
-[Lesson 7](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_7.md): Create a magic system that listens to Minecraft chat, and executes your pre-defined spells!
+[Lezione 7](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson_7.md): Creare un sistema magico che ascolta la chat di Minecraft e lancia le magie che hai creato precedentemente.
 
-[(Advanced) Lesson 8](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson8/lesson8.py): Learn how to import an image into minecraft pixel art using Python Imaging Library.
+[(Avanzato) Lezione 8](https://github.com/teachthenet/TeachCraft-Challenges/blob/master/lesson8/lesson8.py): Impara come importare un immagine in minecraft pixel art usando la Python Imaging Library.
 
-### Want to host your own server / run a server locally?
-- You want to switch to [this repo](https://github.com/teachthenet/TeachCraft-Server)
+### Vuoi hostare un tuo server / far girare un server in locale?
+- Trovi tutto su [questo repository](https://github.com/teachthenet/TeachCraft-Server)
 
-### Minecraft Docs
-- [pi version](http://www.stuffaboutcode.com/p/minecraft-api-reference.html) Has most of the basics of the python api
-- [our version](https://github.com/zhuowei/RaspberryJuice) Has the additional things our python api supports, above and beyond the pi version
+### Documentazione Minecraft
+- [la versione pi](http://www.stuffaboutcode.com/p/minecraft-api-reference.html) Contiene la maggior parte delle api di base per python
+- [la nostra versione](https://github.com/zhuowei/RaspberryJuice) Contiene, oltre alle api di base, il supporto alle nostre.
 - [Minecraft block ids](http://minecraft-ids.grahamedgecombe.com/)
 
-### Notes
-- Player location from the python api will not match the same retrieved from the server.
-    This is because raspberryjuice calculates it from the spawn point, while the server calculates it from 0,0,0.
-    To fix, run this as an admin:
-    setworldspawn 0 0 0
-
+### Note
+- La posizione dalle api python non combacia con la posizione ottenuta dal server.
+    Questo perché raspberryjuice la calcola partendo dal punto di spawn, mentre il server la calcola dalle coordinate 0,0,0.
+    Per fixarlo, lancia come amministratore:
+    `setworldspawn 0 0 0`
