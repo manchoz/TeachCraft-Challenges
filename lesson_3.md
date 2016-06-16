@@ -1,67 +1,68 @@
-# Lesson 3
+# Lezione 3
 
-#### Goal
-Grant your character the ability to walk on water (by turning water blocks underneath the player into ice blocks)
+#### Obiettivi
+Concedi al tuo personaggio l'abilità di camminare sull'acqua... trasformando i blocchi d'acqua sotto sotto al personaggio in blocchi di ghiaccio.
 
-#### New Concepts
+#### Nuovi Concetti
 
 ```python
-if <condition>:
-    <execute this code>
+if <condizione>:
+    <esegui questo codice>
 ```
 
-- We have another construct called an if statement.
-- An If statement has a condition it checks.
-- If the condition passes (is true), it executes the indented code underneath it ONCE.
-- If the condition fails (it is not true), it skips the indented code underneath it.
-- So an IF statement executes its code once, while a While loop executes it repeatedly!
+- Abbiamo un altro construtto chiamato *if*.
+- Un *if* controlla una condizione.
+- Se la condizione passa (è vera), esegue il codice indentato che ha sotto di sé **una volta**.
+- Se la condizione fallisce (non è vera), salta il codice indentato che ha sotto di sé.
+- Quindi una *if* esegue il suo codice una volta, mentre il ciclo *while* lo esegue in ripetizione!
 
 ```python
 x = 4
 if x == 3:
-    print "x is 3"
+    print("x uguale a 3")
 ```
 
-This only runs the print statement if x is 3. Note the double equals sign in the if statement! It's super important. Double equals checks if something is equivalent (compared to a single equals which assigns something to a variable).
+Questo esegue l'istruzione *print* se x è uguale a 3. Nota il segno di doppio uguale nell'istruzione *if*! E` super importante. Il doppio uguale controlla che qualcosa sia equivalente, a differenza del singolo segno di guguale che assegna qualcosa ad una variabile.
 
 ```python
 if y > 10:
     if x > 10:
-        print "y is at least 10 blocks high and x is at least 10 blocks distant"
+        print("y e` almeno alto 10 blocchi e x e` almeno distante 10 blocchi")
 ```
 
-Note that you can stack if statements, so long as you stack the indentation.
+Nota che puoi annidare più *if* uno dentro l'altro, finchè continui ad aumentare l'indentazione.
 
 ```python
 if y >= 10 and y <= 20:
-    print "y between 10 and 20 blocks high"
+    print("y e' alto tra i 10 e i 20 blocchi")
 ```
 
-You can also combine if statements using "and" / "or" operators.
+Puoi anche combinare gli *if* usando gli operatori *and* ed *or*.
 
 
-#### Code
-Open up script.py in a code editor. Delete everything in it, we'll be starting from scratch!
+#### Codice
+Apri *script.py* nel tuo editor. Cancella tutto quello che c'è dentro, cominceremo da zero!
 
 ```python
 import time
 import mcpi.minecraft as minecraft
-mc = minecraft.Minecraft.create(address="199.96.85.3", name="seanybob")
+nome_giocatore = "mancho"
+mc = minecraft.Minecraft.create(address="199.96.85.3", name=nome_giocatore)
 ```
-The first 3 lines are the same as they were in the previous lesson. Be sure to replace "seanybob" with your name!
+Le prime quattro righe sono uguali a come erano nella lezione precedente. Ricordati di sostituire *mancho* con il tuo nome!
 
 ```python
 water_block = 9
 ice_block = 79
 ```
 
-Next we store the block IDs for water and ice in variables for us to use later.
+Quindi salviamo gli *id* dei blocchi di acqua e di ghiaccio in variabili che andremo ad usare successivamente.
 
 ```python
 while True:
 ```
 
-Next we want an infinite loop that keeps running our next chunk of code until we tell it to stop.
+Dopo vogliamo un loop infinito che eseguirà il nostro prossimo pezzo di codice finchè non gli diremo di fermarsi.
 
 ```python
     pos = mc.player.getPos()
@@ -69,42 +70,41 @@ Next we want an infinite loop that keeps running our next chunk of code until we
     y = pos.y
     z = pos.z
 ```
-Inside the while loop, we want to get the player's current position, and stick it in variables for us to refer to later.
+Dentro il ciclo *while*, vogliamo ricevere la posizione corrente del giocatore, e salvarla in variabili che andremo ad usare successivamente.
 
 ```python
     block_below_player = mc.getBlock(x, y - 1, z)
 ```
-Inside the while loop, we want to get the block beneath the player. To do this, we execute the getBlock function, passing it the x/y/z coordinate right below the player! Note the y-1. Since the player's location is x/y/z, by subtracting 1 from y we get the block immediately underneath the player.
+Dentro il ciclo *while*, vogliamo ottenere il blocco che sta sotto al giocare. Per fare questo, eseguigiamo la funzione *getBlock*, passandole le coordinate x/y/z appena sotto al giocatore! Fai attenzione all'*y-1*. Dal momento che la posizione del giocatore è composta da x/y/z, sottraendo 1 da *y* ottieniamo il blocck immediatamente sotto al giocatore.
 
 ```python
-    #If the block below the player is water, turn it into ice.
+    # Se il blocco sotto al giocare e` acqua, trasformalo in ghiaccio.
     if block_below_player == water_block:
         mc.setBlock(x, y - 1, z, ice_block)
 ```
-Inside the while loop, Check and see if the block underneath the player is water. If so, turn it into ice!
+Dentro il ciclo *while*, controlla se il blocco sotto al giocatore è acqua. Se è così, trasformale in ghiaccio!
 
 ```python
     time.sleep(0.2)
 ```
-Inside the while loop, Pause for 0.2 seconds
+Dentro il ciclo *while*, riposiamoci per 0.2 secondi
 
 
-#### Terminal
+#### Terminale
 
-Run the script like so:
+Esegui lo script in questo modo:
 ```shell
 python script.py
 ```
 
-Note that it will run in an infinite loop. To end it you can hit control+C, or just close the terminal.
+Fai attenzione che questo script girerà all'infinito. Per terminarlo devi premere *control+C*, o semplicemente chiudi il terminale.
 
 
-# CHALLENGES
+# SFIDE
 
-You may have noticed that the walk on water script isn't perfect, because there's a slight delay before your script detects you are above water, and you sometimes fall in.
+Puoi aver notato che lo script per camminare sull'acqua non è perfetto; c'è una piccolo ritardo prima che lo script si accorga che tu sia sopra all'acqua, e ci cadrai dentro.
 
-To fix that, instead of just checking the block underneath the player, modify the script to also check the blocks directly underneath and in front, behind, and to the sides of the player.
+Per sistemare questo inconveniente, al posto di controllare solo il block al di sotto del giocatore, modifica lo script per controllare anche di fronte, dietro ed ai lati del giocatore.
 
-This way, we can turn blocks into ice right before the player walks on them!
+In questo modo, possiamo trasformare i blocchi in ghiaccio prima che il giocatore ci camminerà sopra!
 
-    
